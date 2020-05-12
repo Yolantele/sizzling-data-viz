@@ -1,0 +1,29 @@
+{
+  "name": "data-viz",
+  "version": "1.0.0",
+  "description": "sizzling data visualizations",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yolantele/sizzling-data-viz.git"
+  },
+  "keywords": [
+    "data",
+    "vizualisations",
+    "react",
+    "d3"
+  ],
+  "author": "Yolantele",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yolantele/sizzling-data-viz/issues"
+  },
+  "homepage": "https://github.com/Yolantele/sizzling-data-viz#readme",
+  "devDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
