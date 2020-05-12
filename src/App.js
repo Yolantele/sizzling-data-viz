@@ -1,9 +1,19 @@
 import React from 'react'
-import logo from './logo.svg'
 import './App.css'
+import { SteamGraph } from './comps'
 
-function App() {
-  return <div className='App'>I"M HERE</div>
+const App = (props) => {
+  return (
+    <>
+      <header
+        style={{ height: 70, boxShadow: '0px  10px  15px  hsla(0,0%,0%,.1)', width: '100%' }}
+      />
+      <div style={{ minHeight: '100%', margin: 50 }}>
+        <SteamGraph />
+      </div>
+      <footer style={{ height: 400, width: '100%' }} />
+    </>
+  )
 }
 
 export default App
