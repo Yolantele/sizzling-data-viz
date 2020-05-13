@@ -5,5 +5,6 @@ export default {
     height: '100%',
     width: '100%',
     position: 'absolute'
-  }
+  },
+  paper: { padding: 30, paddingBottom: 50 }
 }

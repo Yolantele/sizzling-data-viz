@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Paper } from '@material-ui/core'
+import React, { useEffect } from 'react'
+import { Paper, Typography } from '@material-ui/core'
 import {
   Chart,
   ArgumentAxis,
@@ -13,61 +13,54 @@ import { Stack, Animation } from '@devexpress/dx-react-chart'
 import TitleText from './TitleText'
 import Area from './Area'
 import style from './style'
-import { useData } from '../hooks'
 import PropTypes from 'prop-types'
-import { prototype } from 'module'
 
-const SteamGraph = ({ start, end, numberOfBuildings }) => {
-  const [chartData, setChartData] = useState([])
-  const [builds, setBuilds] = useState([])
-  const { buildingsConsumption, buildings } = useData(numberOfBuildings)
-
+const SteamGraph = ({ series, chartData }) => {
   useEffect(() => {
-    setBuilds(buildings())
-    setChartData(buildingsConsumption(start, end))
-  }, [numberOfBuildings])
+    if (!series.lenght || !chartData.length) {
+      series = []
+      chartData = []
+    }
+  }, [series, chartData])
 
-  if (builds.length && chartData.length) {
+  if (series.length > 0 && chartData.length > 0) {
     return (
-      <Paper style={{ padding: 30, paddingBottom: 50 }}>
-        <Chart data={chartData} style={{ paddingLeft: 30 }}>
-          <ArgumentAxis tickFormat={() => (tick) => tick} />
-          <ValueAxis tickFormat={() => (tick) => tick} />
-
-          {builds.map((name, i) => {
-            return (
-              <AreaSeries
-                key={i}
-                name={String(name)}
-                valueField={name}
-                argumentField='time'
-                seriesComponent={Area}
-              />
-            )
-          })}
-          <Animation />
-          <Legend />
-          <Title text={`Aggregate Buildings Cunsumptions Totals`} textComponent={TitleText} />
-          <Stack
-            stacks={[{ series: builds }]}
-            offset={stackOffsetWiggle}
-            order={stackOrderInsideOut}
-          />
-        </Chart>
+      <Paper style={style.paper}>
+        {chartData.length && (
+          <Chart data={chartData} style={{ paddingLeft: 30 }}>
+            <ArgumentAxis tickFormat={() => (tick) => tick} />
+            <ValueAxis tickFormat={() => (tick) => tick} />
+            {series.length &&
+              series.map((name, i) => {
+                return (
+                  <AreaSeries
+                    key={i}
+                    name={String(name)}
+                    valueField={name}
+                    argumentField='time'
+                    seriesComponent={Area}
+                  />
+                )
+              })}
+            <Animation />
+            <Legend />
+            <Title text={`Aggregate Buildings Cunsumptions Totals`} textComponent={TitleText} />
+            <Stack stacks={[{ series }]} offset={stackOffsetWiggle} order={stackOrderInsideOut} />
+          </Chart>
+        )}
       </Paper>
     )
   } else
     return (
-      <div style={style.loader}>
-        <h2>Loading Aggregate Buildings Enery Consumption Totals...</h2>
-      </div>
+      <Typography variant='h5' component='h5'>
+        Loading the Aggregate data view for Buildings Energy Use...
+      </Typography>
     )
 }
 
 SteamGraph.propTypes = {
-  start: PropTypes.string,
-  end: PropTypes.string,
-  numberOfBuildings: PropTypes.number
+  series: PropTypes.arrayOf(PropTypes.string),
+  chartData: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default SteamGraph

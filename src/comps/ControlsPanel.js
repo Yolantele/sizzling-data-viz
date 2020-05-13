@@ -1,6 +1,7 @@
 import React from 'react'
 import style from '../style'
 import { Button, Typography } from '@material-ui/core'
+import PropTypes from 'prop-types'
 
 const NUMBER_OF_BUILDINGS = [1, 3, 5, 7]
 
@@ -20,5 +21,10 @@ const ControlsPanel = ({ number, setNumber }) => (
     ))}
   </section>
 )
+
+ControlsPanel.propTypes = {
+  setNumber: PropTypes.func,
+  number: PropTypes.number
+}
 
 export default ControlsPanel
