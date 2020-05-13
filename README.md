@@ -1,4 +1,4 @@
-## Sizzling SteamGraph Data Visualisation
+## Sizzling Steam Graphs Data Visualisation
 
 This App Aims to Sketch out possible data visualisations for time-based periodic data to reveal new meaning in the large and otherwise difficult to digest data sets.
 
