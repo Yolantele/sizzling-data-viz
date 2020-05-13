@@ -1,68 +1,21 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Sizzling SteamGraph Data Visualisation
 
-## Available Scripts
+This App Aims to Sketch out possible data visualisations for time-based periodic data to reveal new meaning in the large and otherwise difficult to digest data points.
 
-In the project directory, you can run:
+using the test Data provided within the project you can launch the app:
 
-### `yarn start`
+- install dependencies run `yarn` or `npm -i`
+- run `yarn start` to see the app on http://localhost:3000/
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## About the data parsing:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- the test data came in as 3 large data sets, meters, buildings and half hourly readings (particularly the largest half hourly readings set)
+- A lot of parsing and looping is achieved on the FE with the use of useData Hook - where all of data manipulation is handled in isolation away from components - making it easier to test logics.
+- The graphs visualize each buildings use of water, gas and electricity values combined into one aggregate number , to give broad overviews of time dependand consumption volumes agnostic of energy type.
+- The parsing of data Volume/size does cause some friction with the FE graphs sketches using svg paths - as felay is created between the reeloads - woth further development such issue shouldbe resolved by looking into the modules library settings.
 
-### `yarn test`
+I am diving deeper into d3 and learing more and more on [Data Science](https://github.com/Yolantele/ML-data-clasifier) + Visualizations. Please see my other attempts at d3 visualizations as an exported npm module for [circular sankey visualizations](https://github.com/Yolantele/geofluxus-circular-sankey), or read more on [my blog](https://medium.com/@klpdjolanta/how-to-develop-test-run-and-publish-an-npm-module-react-and-webpack-f436adb54bbb)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Sizzling Steam graphs UI
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<img width="1643" alt="Screenshot 2020-05-13 at 19 13 52" src="https://user-images.githubusercontent.com/30931242/81849842-04943c00-954f-11ea-9a87-396831ecbfbc.png">
