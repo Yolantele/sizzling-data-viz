@@ -39,7 +39,7 @@ const useData = (numberOfBuildings = 5) => {
     return tempTime.hours() * 2
   }
 
-  const buildingsConsumption = (startTime = '2018-12-01 11:00', endTime = '2018-12-01 16:00') => {
+  const buildingsConsumption = (startTime, endTime) => {
     let range = []
     let times = calculateTimeSlots(startTime, endTime)
     let dataRange = halfHourlyData.filter(
