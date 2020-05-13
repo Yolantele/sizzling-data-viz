@@ -15,7 +15,7 @@ import Area from './Area'
 import style from './style'
 import PropTypes from 'prop-types'
 
-const SteamGraph = ({ series, chartData }) => {
+const SteamGraph = ({ series, chartData, overlay, title }) => {
   useEffect(() => {
     if (!series.lenght || !chartData.length) {
       series = []
@@ -44,8 +44,10 @@ const SteamGraph = ({ series, chartData }) => {
               })}
             <Animation />
             <Legend />
-            <Title text={`Aggregate Buildings Cunsumptions Totals`} textComponent={TitleText} />
-            <Stack stacks={[{ series }]} offset={stackOffsetWiggle} order={stackOrderInsideOut} />
+            <Title text={title} textComponent={TitleText} />
+            {!overlay && (
+              <Stack stacks={[{ series }]} offset={stackOffsetWiggle} order={stackOrderInsideOut} />
+            )}
           </Chart>
         )}
       </Paper>
@@ -59,8 +61,10 @@ const SteamGraph = ({ series, chartData }) => {
 }
 
 SteamGraph.propTypes = {
-  series: PropTypes.arrayOf(PropTypes.string),
-  chartData: PropTypes.arrayOf(PropTypes.object)
+  series: PropTypes.arrayOf(PropTypes.string).isRequired,
+  chartData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  overlay: PropTypes.bool,
+  title: PropTypes.string.isRequired
 }
 
 export default SteamGraph

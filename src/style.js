@@ -5,7 +5,7 @@ export default {
     width: '100%',
     marginBottom: 20
   },
-  cont: { minHeight: '100%', margin: 20, marginBottom: 50 },
+  cont: { minHeight: '100%', margin: 50 },
   foot: { height: 400, width: '100%' },
   constrols: { margin: 30, display: 'flex', flexWrap: 'wrap', width: '100%', direction: 'row' },
   button: {
