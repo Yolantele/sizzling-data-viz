@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Paper from '@material-ui/core/Paper'
+import { Paper } from '@material-ui/core'
 import {
   Chart,
   ArgumentAxis,
@@ -14,23 +14,25 @@ import TitleText from './TitleText'
 import Area from './Area'
 import style from './style'
 import { useData } from '../hooks'
+import PropTypes from 'prop-types'
+import { prototype } from 'module'
 
-const SteamGraph = () => {
+const SteamGraph = ({ start, end, numberOfBuildings }) => {
   const [chartData, setChartData] = useState([])
   const [builds, setBuilds] = useState([])
-  const { buildingsConsumption, buildings } = useData(4)
+  const { buildingsConsumption, buildings } = useData(numberOfBuildings)
 
   useEffect(() => {
     setBuilds(buildings())
-    setChartData(buildingsConsumption())
-  }, [])
+    setChartData(buildingsConsumption(start, end))
+  }, [numberOfBuildings])
 
   if (builds.length && chartData.length) {
     return (
       <Paper style={{ padding: 30, paddingBottom: 50 }}>
         <Chart data={chartData} style={{ paddingLeft: 30 }}>
-          <ArgumentAxis tickFormat={() => (tick) => tick} showLabels />
-          <ValueAxis tickFormat={() => (tick) => tick} showLabels />
+          <ArgumentAxis tickFormat={() => (tick) => tick} />
+          <ValueAxis tickFormat={() => (tick) => tick} />
 
           {builds.map((name, i) => {
             return (
@@ -45,7 +47,7 @@ const SteamGraph = () => {
           })}
           <Animation />
           <Legend />
-          <Title text={`Agregate Buildings Cunsumptions Totals`} textComponent={TitleText} />
+          <Title text={`Aggregate Buildings Cunsumptions Totals`} textComponent={TitleText} />
           <Stack
             stacks={[{ series: builds }]}
             offset={stackOffsetWiggle}
@@ -57,9 +59,15 @@ const SteamGraph = () => {
   } else
     return (
       <div style={style.loader}>
-        <h2>Loading SteamGraph...</h2>
+        <h2>Loading Aggregate Buildings Enery Consumption Totals...</h2>
       </div>
     )
+}
+
+SteamGraph.propTypes = {
+  start: PropTypes.string,
+  end: PropTypes.string,
+  numberOfBuildings: PropTypes.number
 }
 
 export default SteamGraph
