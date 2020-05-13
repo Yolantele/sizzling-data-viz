@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { AreaSeries } from '@devexpress/dx-react-chart-material-ui'
 import { curveCatmullRom, area } from 'd3-shape'
 
