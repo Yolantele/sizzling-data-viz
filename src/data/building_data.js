@@ -1,4 +1,4 @@
-export const buildingData = [
+export default [
   {
     id: 9539,
     name: 'Aberdeen'

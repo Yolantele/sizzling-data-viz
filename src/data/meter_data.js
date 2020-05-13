@@ -1,4 +1,4 @@
-export const meterData = [
+export default [
   {
     building_id: 9539,
     id: 196327,
