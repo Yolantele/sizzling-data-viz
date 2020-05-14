@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Paper, Typography } from '@material-ui/core'
 import {
   Chart,
@@ -15,17 +15,10 @@ import Area from './Area'
 import style from './style'
 import PropTypes from 'prop-types'
 
-const SteamGraph = ({ series, chartData, overlay, title }) => {
-  useEffect(() => {
-    if (!series.lenght || !chartData.length) {
-      series = []
-      chartData = []
-    }
-  }, [series, chartData])
-
+const SteamGraph = ({ series, chartData, overlay, title, key }) => {
   if (series.length > 0 && chartData.length > 0) {
     return (
-      <Paper style={style.paper}>
+      <Paper style={style.paper} key={key}>
         {chartData.length && (
           <Chart data={chartData} style={{ paddingLeft: 30 }}>
             <ArgumentAxis tickFormat={() => (tick) => tick} />
@@ -64,7 +57,8 @@ SteamGraph.propTypes = {
   series: PropTypes.arrayOf(PropTypes.string).isRequired,
   chartData: PropTypes.arrayOf(PropTypes.object).isRequired,
   overlay: PropTypes.bool,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  key: PropTypes.Number
 }
 
 export default SteamGraph

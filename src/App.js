@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { SteamGraph, ErrorBoundary, ControlsPanel } from './comps'
+import { SteamGraph, ErrorBoundary } from './comps'
 import style from './style'
 import { useData } from './hooks'
 
 const App = () => {
-  const [range, setRange] = useState({ start: '2018-12-01 04:00', end: '2018-12-01 11:00' })
-  const [number, setNumber] = useState(5)
+  const range = { start: '2018-12-01 05:00', end: '2018-12-01 10:00' }
   const [chartData, setChartData] = useState([])
   const [builds, setBuilds] = useState([])
-  const { buildingsConsumption, buildings } = useData(number)
+  const { buildingsConsumption, buildings } = useData(4)
 
   useEffect(() => {
     setBuilds(buildings())
     setChartData(buildingsConsumption(range.start, range.end))
-  }, [number])
+  }, [])
 
   return (
     <ErrorBoundary>
@@ -21,20 +20,22 @@ const App = () => {
       <main style={style.cont}>
         <SteamGraph
           {...{
+            key: 1,
             series: builds,
             chartData,
-            title: `Aggregate Totals of Buildings Energy Cunsumption`
+            title: `Aggregate Totals of Buildings Energy Cunsumption`,
+            overlay: false
           }}
         />
         <SteamGraph
           {...{
+            key: 2,
             series: builds,
             chartData,
             title: 'Comparative Totals of Buildings Energy Consumption',
             overlay: true
           }}
         />
-        {/* <ControlsPanel {...{ number, setNumber }} /> */}
       </main>
       <footer style={style.foot} />
     </ErrorBoundary>

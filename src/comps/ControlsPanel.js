@@ -12,7 +12,7 @@ const ControlsPanel = ({ number, setNumber }) => (
     </Typography>
     {NUMBER_OF_BUILDINGS.map((val) => (
       <Button
-        color={number == val ? 'primary' : 'default'}
+        color={number === val ? 'primary' : 'default'}
         onClick={() => setNumber(val)}
         style={style.button}
         size='large'>
